@@ -5,12 +5,22 @@
   --fuente:'Segoe UI',system-ui,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{height:100%;scroll-behavior:smooth}
 body{font-family:var(--fuente);background:var(--gris-bg);color:var(--negro);min-height:100vh;display:flex;flex-direction:column}
+
+/* FIX REACT */
+#root{display:flex;flex-direction:column;min-height:100vh}
 
 /* HEADER */
 .header{background:var(--negro);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.4)}
-.header-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.header-inner{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 32px;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px
+}
 .logo{display:flex;align-items:center;gap:10px}
 .logo img{height:38px;width:auto;object-fit:contain}
 .logo-text{color:var(--blanco);font-size:1.05rem;letter-spacing:.08em;text-transform:uppercase}
@@ -20,16 +30,30 @@ body{font-family:var(--fuente);background:var(--gris-bg);color:var(--negro);min-
 .nav-btn:hover,.nav-btn.activo{background:var(--azul);border-color:var(--azul)}
 
 /* MENSAJE */
-#mensaje{max-width:1100px;margin:16px auto 0;padding:12px 20px;border-radius:var(--radio);font-weight:600;font-size:.95rem;display:none}
+#mensaje{
+  width:100%;
+  max-width:1400px;
+  margin:16px auto 0;
+  padding:12px 20px;
+  border-radius:var(--radio);
+  font-weight:600;font-size:.95rem;display:none
+}
 #mensaje.exito{display:flex;background:#D1FAE5;color:#065F46;border-left:4px solid var(--verde)}
 #mensaje.error{display:flex;background:#FEE2E2;color:#991B1B;border-left:4px solid var(--rojo)}
 #mensaje.info{display:flex;background:#DBEAFE;color:#1E40AF;border-left:4px solid var(--azul)}
 
 /* SECCIONES */
-.seccion{max-width:1100px;margin:28px auto;padding:0 16px;flex:1;display:none}
+.seccion{
+  width:100%;
+  max-width:1100px;
+  margin:28px auto;
+  padding:0 32px;
+  flex:1;
+  display:none
+}
 .seccion.activa{display:block}
 
-/* Sección de tabla con más ancho para que quepan todas las columnas */
+/* La sección de tabla necesita más ancho */
 #sec-tabla{max-width:1400px}
 
 /* CARD */
@@ -68,7 +92,7 @@ textarea{resize:vertical;min-height:80px}
 .btn-editar{background:var(--azul);color:var(--blanco);padding:5px 12px;font-size:.8rem;border-radius:5px;border:none;cursor:pointer}
 .btn-eliminar{background:var(--rojo);color:var(--blanco);padding:5px 12px;font-size:.8rem;border-radius:5px;border:none;cursor:pointer}
 
-/* TABLA — estilo "base de datos" con líneas completas */
+/* TABLA */
 .tabla-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:12px}
 .export-btns{display:flex;gap:8px}
 
@@ -80,51 +104,41 @@ textarea{resize:vertical;min-height:80px}
 
 table{
   width:100%;
+  min-width:900px;
   border-collapse:collapse;
   font-size:.88rem;
-  table-layout:fixed;
+  table-layout:auto;
 }
-
-thead th:nth-child(1){width:100px}  /* Consecutivo */
-thead th:nth-child(2){width:150px}  /* Parámetro */
-thead th:nth-child(3){width:90px}   /* Valor */
-thead th:nth-child(4){width:auto}   /* Descripción - se lleva el espacio sobrante */
-thead th:nth-child(5){width:130px}  /* Tipo Grupo */
-thead th:nth-child(6){width:160px}  /* Nota */
-thead th:nth-child(7){width:140px}  /* Acciones */
 
 thead th{
   background:var(--negro);
   color:var(--blanco);
-  padding:12px 14px;
+  padding:12px 16px;
   text-align:left;
   font-size:.78rem;
   letter-spacing:.04em;
   text-transform:uppercase;
-  white-space:normal;
-  word-wrap:break-word;
+  white-space:nowrap;
   border-right:1px solid rgba(255,255,255,.15);
 }
 thead th:last-child{border-right:none}
 
-tbody tr{
-  border-bottom:1px solid var(--gris-bd);
-  transition:background .15s;
-}
+tbody tr{border-bottom:1px solid var(--gris-bd);transition:background .15s}
 tbody tr:last-child{border-bottom:none}
 tbody tr:nth-child(even){background:#FAFBFC}
 tbody tr:hover{background:#F0F4FF}
 
 tbody td{
-  padding:11px 14px;
+  padding:11px 16px;
   vertical-align:middle;
   border-right:1px solid var(--gris-bd);
+  max-width:280px;
   word-wrap:break-word;
   overflow-wrap:break-word;
 }
 tbody td:last-child{
   border-right:none;
-  white-space:nowrap; /* la columna Acciones nunca se corta */
+  white-space:nowrap;
 }
 
 .msg-tabla{text-align:center;color:var(--gris-tx);padding:32px}
@@ -149,7 +163,12 @@ tbody td:last-child{
 .modal-titulo{font-size:1.2rem;font-weight:700;margin-bottom:24px}
 
 /* FOOTER */
-.footer{background:var(--negro);text-align:center;padding:18px 24px;margin-top:auto}
+.footer{background:var(--negro);text-align:center;padding:18px 32px;margin-top:auto}
+.footer-inner{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+}
 .footer p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.9}
 .footer .dev{color:rgba(255,255,255,.3);font-size:.74rem}
 .footer .dev strong{color:var(--rojo)}
@@ -164,13 +183,5 @@ tbody td:last-child{
   .nav{width:100%;justify-content:center}
   .card{padding:20px 16px}
   .logo img{height:28px}
-}
-
-/* FIX REACT: #root debe ser parte de la cadena flex para que el footer
-   se quede siempre abajo, sin importar la sección activa */
-html, body{height:100%}
-#root{
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
+  .seccion{padding:0 16px}
 }
