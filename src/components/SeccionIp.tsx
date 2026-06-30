@@ -1,4 +1,4 @@
-export default function SeccionIp() {
+/*export default function SeccionIp() {
   return (
     <section id="sec-ip" className="seccion activa">
       <div className="card">
@@ -6,4 +6,4 @@ export default function SeccionIp() {
       </div>
     </section>
   );
-}
+}*/

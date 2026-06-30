@@ -5,7 +5,7 @@ export default function Header({ seccion, setSeccion }: Props) {
     { id: "formulario", label: "➕ Nuevo" },
     { id: "tabla", label: "📋 Registros" },
     { id: "buscar", label: "🔍 Buscar" },
-    { id: "ip", label: "🌍 Ip's" },
+    //{ id: "ip", label: "🌍 Ip's" },
   ];
   return (
     <header className="header">

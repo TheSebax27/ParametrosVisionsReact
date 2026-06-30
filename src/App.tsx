@@ -5,7 +5,7 @@ import FormularioParametro from "./components/FormularioParametro";
 import TablaParametros from "./components/TablaParametros";
 import BuscarParametro from "./components/BuscarParametro";
 import ModalEditar from "./components/ModalEditar";
-import SeccionIp from "./components/SeccionIp";
+//import SeccionIp from "./components/SeccionIp";
 import Footer from "./components/Footer";
 import { useParametros } from "./hooks/useParametros";
 import type { Parametro } from "./types/parametro";
@@ -38,7 +38,7 @@ export default function App() {
         <TablaParametros registros={registros} onEditar={abrirModal} onEliminar={eliminar} onExportExcel={exportExcel} onExportPDF={exportPDF} />
       )}
       {seccion === "buscar" && <BuscarParametro registros={registros} />}
-      {seccion === "ip" && <SeccionIp />}
+      {/*seccion === "ip" && <SeccionIp />*/}
 
       <ModalEditar registro={editando} onCerrar={() => setEditando(null)} onActualizar={actualizarParametro} />
 
